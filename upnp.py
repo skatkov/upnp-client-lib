@@ -171,7 +171,7 @@ class upnp():
 
 		if messageType != False:			
 
-			actualType, actualName = self.getTypeAndName(self.parseHeader(data, "NT"))
+			actualType, actualName = self.getTypeAndName(self.parseHeader(data, "ST"))
 			
 			if (actualType == searchType) & (actualName == searchName):
 				#collect all the data
@@ -196,7 +196,7 @@ class upnp():
 		self.send(self.buildMsearchRequest(searchType, searchName),server)
 		
 		while True:			
-			if self.findRequest(self.listen(1024,server), searchType, searchName): return true
+			if self.findRequest(self.listen(1024,server), searchType, searchName): return True
 
 
 
@@ -215,4 +215,5 @@ class upnp():
 			return
 
 		while True:			
-			if self.findRequest(self.listen(1024, server), searchType, searchName): return true	
+			if self.findRequest(self.listen(1024, server), searchType, searchName): return True
+	
